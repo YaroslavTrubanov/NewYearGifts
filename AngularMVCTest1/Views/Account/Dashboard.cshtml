@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_dashboard.cshtml";
+}
+@using AngularMVCTest1.Security
+
+
+
+<div align="center">
+    <h3>Аналитический раздел Деда Мороза </h3>
+    <br />
+    Ну наконец, вот и ты <b>@SessionPersister.Username</b>. Мы тебя заждались уже!
+    <hr />
+</div>
+
+<div class="container col-lg-12" ng-controller="DashboardController">
+    <div>
+        <div class="col-lg-6">
+            <a class="btn btn-default" id="show_address" href="#map">Отобразить на карте</a>
+        </div>
+        <div style="float:right">
+            <p>Фильтровать по: </p>
+            <!--<select class="form-control" ng-model="filterBy">
+                <option value="CustomerName">Имя заказчика</option>
+                <option value="Address">Адрес заказчика</option>
+                <option value="OrderInfo">Состав заказа</option>
+                <option value="Formalizated">Статус формирования</option>
+                <option value="Employee">Имя работника отдела формирования</option>
+                <option value="Delivered">Статус доставки</option>
+            </select>-->
+            <input type="text" class="form-control" placeholder="Поиск..." ng-model="searchBox">
+            <br />
+        </div><br />
+    </div>
+
+
+        <table class="table table-bordered" id="admin_table">
+            <tr>
+                <th><strong>Номер заказа</strong></th>
+                <th><strong>Имя заказчика</strong></th>
+                <th><strong>Адрес заказчика</strong></th>
+                <th><strong>Состав заказа</strong></th>
+                <th><strong>Сформирован</strong></th>
+                <th><strong>Имя работника отдела формирования</strong></th>
+                <th><strong>Дата формирования</strong></th>
+                <th><strong>Доставлен</strong></th>
+            <tr ng-repeat="item in info | filter:searchBox">
+                <!--<td>{{$index + 1}}</td>-->
+                <td>{{item.OrderId}}</td>
+                <td>{{item.CustomerName}}</td>
+                <td class="address">{{item.Address}}</td>
+                <td>{{item.OrderInfo}}</td>
+                <td>{{item.Formalizated | num}}</td>
+                <td>{{item.Employee}}</td>
+                <td>{{item.FormalizationDate | jsonDate: 'yyyy-MM-dd' }}</td>
+                <td>{{item.Delivered  | num}}</td>
+            </tr>
+        </table>
+    <div align="center">
+        <h3>Карта</h3>
+        <hr /><br />
+        <div id="map"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="~/scripts/googlemaps.js"></script>

@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div ng-controller="GiftsListController" class="container col-lg-12" >
+    <div class="container col-lg-12">
+        <fieldset class="scheduler-border">
+            <h2>Скоро Новый Год!</h2>
+        </fieldset>
+    </div>
+ <div class="col-lg-8">
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border"><span class="glyphicon glyphicon-gift"></span> <b>Подарки</b></legend>
+            <table class="table table-bordered">
+                <tr>
+                    <th><strong>Название подарка</strong></th>
+                    <th><strong>Количество</strong></th>
+                <tr ng-repeat="gift in gifts">
+                    <td>{{gift.GiftName}}</td>
+                    <td>
+                        <select class="form-control" ng-model="quantity" ng-options="number as number.value for number in numbers track by number.value"></select>
+                    </td>
+                    <td>
+                        <input ng-click="addToCart(gift, quantity)" type="button" class="btn btn-default" value="Добавить в заказ!" />
+                    </td>
+                </tr>
+            </table>
+       </fieldset>
+    </div>
+    <div class="col-lg-4">
+        <fieldset class="scheduler-border">
+            <legend class="scheduler-border"><span class="glyphicon glyphicon-shopping-cart"></span> Ваша корзина</legend>
+            <div align="center" ng-show="showEmptyCart">Ваша корзина пуста</div>
+                <ul ng-model="storageShoppingCart" style="list-style:none" ng-repeat="item in cart.cart">
+                    <li>Подарок: {{item.GiftName}} <span class="badge">{{item.quantity}}</span> <a style="color: #000" ng-click="delete($index)"><span class="glyphicon glyphicon-remove"></span></a></li>
+                </ul>
+        </fieldset>
+        <div>
+            <input ng-click="checkout();" type="button" class="btn btn-primary text-right" value="Оформить заказ" />
+            <div id="cartWarning" class="alert alert-warning">
+                <strong>Внимание!</strong> Вы можете сделать заказ, состоящий только от одного до пяти подарков! Извините :(
+            </div>
+            <br />
+            <br />
+            <form ng-show="formSend" ng-submit="addInfo()">
+                <p>Введите Ваше имя и Ваш адрес:</p>
+                <input required ng-model="customerName" class="form-control" type="text" placeholder="Ваше имя" />
+                <div id="locationField">
+                    <input id="autocomplete" class="form-control" placeholder="Ваш адрес" onFocus="geolocate()" type="text" />
+                </div>
+                <br />             
+                <table id="address" class="table table-striped" style="display:none">
+                    <tr>
+                        <td>
+                            <input id="all_address" required ng-model="address_text" type="text"/> 
+                        </td>
+                        <td>
+                            <input id="street_number" placeholder="Дом" />
+                        </td>
+                        <td>
+                            <input id="route" placeholder="Улица" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="locality" placeholder="Город"/>
+                        </td>
+                        <td>
+                            <input id="administrative_area_level_1" placeholder="Область" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="country" placeholder="Страна" />
+                        </td>
+                        <td>
+                            <input id="postal_code" placeholder="Индекс"/>
+                        </td>
+                    </tr>
+                </table>
+                <input href="#" class="btn btn-success" type="submit" value="Отправить"/> 
+                <div id="successOrderText" class="alert alert-success">
+                    <strong>Вы успешно оформили заказ!</strong> Счастливого Нового Года!
+                </div>
+            </form>
+        </div>
+        
+
+    </div>
+
+</div>

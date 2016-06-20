@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GiftsDBModel1StoreContainer" CdmEntityContainer="GiftsDBEntities1">
+    <EntitySetMapping Name="Gifts">
+      <EntityTypeMapping TypeName="GiftsDBModel1.Gifts">
+        <MappingFragment StoreEntitySet="Gifts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GiftName" ColumnName="GiftName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Info">
+      <EntityTypeMapping TypeName="GiftsDBModel1.Info">
+        <MappingFragment StoreEntitySet="Info">
+          <ScalarProperty Name="Delivered" ColumnName="Delivered" />
+          <ScalarProperty Name="Formalizated" ColumnName="Formalizated" />
+          <ScalarProperty Name="FormalizationDate" ColumnName="FormalizationDate" />
+          <ScalarProperty Name="Employee" ColumnName="Employee" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OrderInfo" ColumnName="OrderInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

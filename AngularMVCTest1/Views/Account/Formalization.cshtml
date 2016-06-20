@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_dashboard.cshtml";
+}
+@using AngularMVCTest1.Security
+
+<div align="center">
+    <h3>Страница формирования заказов</h3>
+    <br />
+    Добро пожаловать, 
+    <div id="emp_name"><b>@SessionPersister.Username</b> </div>
+</div>
+
+<div class="container col-lg-12" ng-controller="FormalizationController">
+        <table class="table table-bordered">
+            <tr>
+                <th><strong>Номер заказа</strong></th>
+                <th><strong>Имя заказчика</strong></th>
+                <th><strong>Адрес заказчика</strong></th>
+                <th><strong>Состав заказа</strong></th>
+                <th><strong>Сформирован</strong></th>
+                </tr>
+            <tr ng-hide="(item.Formalizated == 1)" ng-repeat="item in info">
+                <td>{{item.OrderId}}</td>
+                <td>{{item.CustomerName}}</td>
+                <td>{{item.Address}}</td>
+                <td>{{item.OrderInfo}}</td>
+                <td>{{item.Formalizated}}</td>
+                <td>
+                    <input ng-click="formalize(item)" type="button" class="btn btn-default" value="Сформировать!" />
+                </td>
+            </tr>
+        </table>
+</div>

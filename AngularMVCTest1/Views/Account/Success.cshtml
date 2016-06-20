@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_dashboard.cshtml";
+}
+@using AngularMVCTest1.Security
+
+<div align="center" class="container col-lg-12">
+
+    Добро пожаловать, <b>@SessionPersister.Username</b>, вы зашли в систему. В соответствии со своей ролью выберите раздел, в который вам надо перейти.
+    <br /><br />
+    <a class="btn btn-default" href="formalization">Раздел формирования</a>
+    <a class="btn btn-default" href="delivery">Служба доставки</a>
+    <a class="btn btn-default" href="dashboard">Аналитический раздел Деда Мороза</a>
+    
+</div>

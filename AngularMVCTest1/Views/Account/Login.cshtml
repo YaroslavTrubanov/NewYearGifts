@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_dashboard.cshtml";
+}
+
+@model AngularMVCTest1.ViewModels.AccountViewModel
+<br />
+<div align="center"><h2>Добро пожаловать на страницу авторизации!<br /><br /> Если Вы - один из помощников Деда Мороза, один из тройки, либо сам Дед Мороз, пожалуста войдите под своим именем.</h2>
+</div>
+<div align="center" class="container col-lg-12 center-block">
+    @using (Html.BeginForm("login", "account", FormMethod.Post)) {
+        <div style="color:red">@ViewBag.Error</div>     
+        <br />
+        @Html.TextBoxFor(model => model.Account.Username, new { @class = "form-control", placeholder = "Введите ваш логин", autofocus = "autofocus", required = "required" })
+        @Html.PasswordFor(model => model.Account.Password, new { @class = "form-control", placeholder = "Введите ваш пароль", required = "required" })
+        <br />
+        <input class="btn btn-default" type="submit" value="Войти" />
+    }
+</div>

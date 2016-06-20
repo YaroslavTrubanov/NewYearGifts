@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_dashboard.cshtml";
+}
+@using AngularMVCTest1.Security
+
+<div align="center">
+    <h3>Служба доставки </h3>
+    <br />
+    Добро пожаловать, <b>@SessionPersister.Username</b>
+    <hr />
+    <br />
+</div>
+
+<div class="container col-lg-12" ng-controller="DeliveryController">
+        <table class="table table-bordered">
+            <tr>
+                <th><strong>Номер заказа</strong></th>
+                <th><strong>Имя заказчика</strong></th>
+                <th><strong>Адрес заказчика</strong></th>
+                <th><strong>Состав заказа</strong></th>
+                <th><strong>Имя работника отдела формирования</strong></th>
+                <th><strong>Дата формирования</strong></th>
+            <tr ng-hide="(item.Formalizated == 0) || (item.Delivered == 1)" ng-repeat="item in info">
+                <td>{{item.OrderId}}</td>
+                <td>{{item.CustomerName}}</td>
+                <td>{{item.Address}}</td>
+                <td>{{item.OrderInfo}}</td>
+                <td>{{item.Employee}}</td>
+                <td>{{item.FormalizationDate | jsonDate: 'yyyy-MM-dd' }}</td>
+                <td align="center">
+                    <button ng-click="done(item)" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Доставлен!</button>
+                    <button ng-click="notDone(item)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-thumbs-down"></span> Переформировать!</button>
+                </td>
+            </tr>
+        </table>
+</div>

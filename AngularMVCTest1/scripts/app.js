@@ -48,6 +48,15 @@ myApp.controller('GiftsListController', function GiftsListController($scope, $ht
             $scope.gifts = "Пожалуйста, перезагрузите страницу";
         });
 
+    //работа с таблицой Info
+    $http.get('/home/GetInfo/')
+        .success(function (result) {
+            $scope.info = result;
+        })
+        .error(function (data) {
+            console.log(data);
+        });
+
     $scope.cart = $localStorage.$default({ cart: [] }); //определение localStorage с подмассивом cart
 
     if ($scope.cart.cart[0] != null) $scope.showEmptyCart = false;
@@ -55,11 +64,23 @@ myApp.controller('GiftsListController', function GiftsListController($scope, $ht
 
     $scope.orderArr = [];
     $scope.formSend = false;
+
     //предупреждения
     $("#cartWarning").hide();
     $("#successOrderText").hide();
 
     $scope.numbers = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }];
+
+    $scope.addPrev = function () {
+        if ($scope.previousOrder != null) {
+            $scope.showEmptyCart = false;
+            var arr = $scope.previousOrder.OrderInfo.split(',');
+            for (var i = 0; i < arr.length; i++) {
+                $scope.cart.cart.push(angular.extend({quantity: 1}, { GiftName: arr[i] }));
+            }
+        }
+    };
+
     $scope.addToCart = function (gift, numbers) {
         if (numbers != undefined) {
             $scope.showEmptyCart = false;
@@ -201,7 +222,7 @@ myApp.controller('DashboardController', function DashboardController($scope, $ht
         })
         .error(function (data) {
             console.log(data);
-        });
+        });  
 });
 
 function goBack() {

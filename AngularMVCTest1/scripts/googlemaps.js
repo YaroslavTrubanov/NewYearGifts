@@ -78,3 +78,7 @@ $("#show_address").click(function () {
 
     theNext();
 });
+
+$("#show_formalizated").click(function () {
+
+})

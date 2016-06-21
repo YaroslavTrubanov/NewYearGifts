@@ -11,9 +11,11 @@ namespace AngularMVCTest1.Models
 
         public AccountModel()
         {
-            listAccounts.Add(new Account { Username = "moroz", Password = "moroz", Roles = "admin" });
-            listAccounts.Add(new Account { Username = "deliveryman", Password = "deliveryman", Roles = "editor" });
+            listAccounts.Add(new Account { Username = "Мороз", Password = "Мороз", Roles = "admin" });
+            listAccounts.Add(new Account { Username = "Лошадка", Password = "Лошадка", Roles = "editor" });
             listAccounts.Add(new Account { Username = "helper", Password = "helper", Roles = "employee" });
+            listAccounts.Add(new Account { Username = "Лиса", Password = "Лиса", Roles = "employee" });
+            listAccounts.Add(new Account { Username = "Енот", Password = "Енот", Roles = "employee" });
         }
 
         public Account find(string username)

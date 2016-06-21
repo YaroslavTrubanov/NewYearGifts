@@ -8,8 +8,9 @@
 <div align="center">
     <h3>Аналитический раздел Деда Мороза </h3>
     <br />
-    Ну наконец, вот и ты <b>@SessionPersister.Username</b>. Мы тебя заждались уже!
+    Ну наконец, вот и ты, <b>@SessionPersister.Username</b>. Мы тебя заждались уже!
     <hr />
+    <br />
 </div>
 
 <div class="container col-lg-12" ng-controller="DashboardController">
@@ -19,15 +20,15 @@
         </div>
         <div style="float:right">
             <p>Фильтровать по: </p>
-            <!--<select class="form-control" ng-model="filterBy">
+            <select class="form-control" ng-model="filterBy">
                 <option value="CustomerName">Имя заказчика</option>
                 <option value="Address">Адрес заказчика</option>
                 <option value="OrderInfo">Состав заказа</option>
                 <option value="Formalizated">Статус формирования</option>
                 <option value="Employee">Имя работника отдела формирования</option>
                 <option value="Delivered">Статус доставки</option>
-            </select>-->
-            <input type="text" class="form-control" placeholder="Поиск..." ng-model="searchBox">
+            </select>
+            <input type="text" class="form-control" placeholder="Поиск..." ng-model="searchBox[filterBy]" ng-disabled="!filterBy">
             <br />
         </div><br />
     </div>

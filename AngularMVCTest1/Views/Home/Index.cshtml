@@ -5,11 +5,23 @@
 <br />
 <div ng-controller="GiftsListController" class="container col-lg-12" >
     <div class="container col-lg-12">
-        <fieldset class="scheduler-border">
+        <fieldset class="scheduler-border"  align="center">
             <h2>Скоро Новый Год!</h2>
+            <hr />
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Новый Год - время волшебства. И ты, мой дорогой друг, можешь выбрать для себя подарок! Можешь посмотреть, что до тебя заказывали другие ребята, и повторить их заказ, а можешь собрать заказ сам, из чего пожелаешь! Приступай! Но помни - подарков может на всех не хватить, поэтому заказывай не больше пяти штук. Счастивого Нового Года!</p>
         </fieldset>
     </div>
  <div class="col-lg-8">
+     <fieldset class="scheduler-border">
+         <legend class="scheduler-border"><b>Выберите один из уже совершенных заказов</b></legend>
+         <table >
+             <tr>
+                 <td class="select_prev"><select class="form-control" ng-model="previousOrder" ng-change="update()" ng-options="item as item.OrderInfo for item in info"></select></tdclass="select_prev"> 
+                 <td class="select_prev"><input ng-click="addPrev()" type="button" class="btn btn-default" value="Отправить в корзину!" /></tdclass="select_prev">
+             </tr>
+         </table>
+     </fieldset>
+
         <fieldset class="scheduler-border">
             <legend class="scheduler-border"><span class="glyphicon glyphicon-gift"></span> <b>Подарки</b></legend>
             <table class="table table-bordered">

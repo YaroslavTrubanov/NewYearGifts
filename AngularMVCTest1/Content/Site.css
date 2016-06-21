@@ -36,3 +36,6 @@ legend.scheduler-border {
     height: 500px;
     width: 900px;
 }
+.select_prev {
+    padding-right: 10px;
+}

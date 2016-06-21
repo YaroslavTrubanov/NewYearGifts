@@ -37,7 +37,7 @@ myApp.config(function ($routeProvider) {
     });
 });
 
-myApp.controller('GiftsListController', function GiftsListController($scope, $http, $localStorage, $sessionStorage) {
+myApp.controller('GiftsListController', function GiftsListController($scope, $http, $localStorage, $sessionStorage, $timeout, $window) {
     //работа с таблицой Gifts
     $http.get('/home/GetGifts/')
         .success(function (result) {
@@ -85,7 +85,7 @@ myApp.controller('GiftsListController', function GiftsListController($scope, $ht
         if (numbers != undefined) {
             $scope.showEmptyCart = false;
             $scope.cart.cart.push(angular.extend({ quantity: numbers.value }, gift));
-        }
+        };
     };
 
     //удаление элементов из корзины
@@ -144,6 +144,7 @@ myApp.controller('GiftsListController', function GiftsListController($scope, $ht
                 $scope.cart.$reset(); //очищаем localStorage
                 $scope.showEmptyCart = true;
                 $("#successOrderText").show();
+                $timeout(function () { $window.location.reload(); }, 700); //перезагрузка страницы
             })
             .error(function (data) {
                 console.log(data);
